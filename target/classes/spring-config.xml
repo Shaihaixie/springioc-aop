@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop.xsd" >
+
+
+    <context:property-placeholder location="jdbc.properties"></context:property-placeholder>
+
+      <context:component-scan base-package="com.neuedu"></context:component-scan>
+
+
+    <!--基于aspectj aop配置-->
+    <!--<aop:aspectj-autoproxy></aop:aspectj-autoproxy>-->
+
+
+     <!--&lt;!&ndash;spring aop&ndash;&gt;-->
+     <!--&lt;!&ndash;定义切面类&ndash;&gt;-->
+ <!--&lt;!&ndash;   <bean id="logAspect" class="com.neuedu.aspect.LogAspect"></bean>-->
+    <!--<aop:config >-->
+         <!--<aop:aspect id="myAspect" ref="logAspect">-->
+          <!--&lt;!&ndash;定义切入点&ndash;&gt;-->
+             <!--<aop:pointcut id="serivce"   expression="execution(* com.neuedu.service.ProductService.findProductById(int,String)) "></aop:pointcut>-->
+             <!--&lt;!&ndash;定义前置通知&ndash;&gt;-->
+            <!--&lt;!&ndash; <aop:before method="start"  pointcut-ref="serivce"></aop:before>-->
+             <!--<aop:after-returning method="after_returnning" returning="product"  pointcut-ref="serivce"></aop:after-returning>-->
+             <!--<aop:after-throwing method="throwing" throwing="ex"  pointcut-ref="serivce"></aop:after-throwing>-->
+             <!--<aop:after method="finish" pointcut-ref="serivce"></aop:after>&ndash;&gt;-->
+             <!--<aop:around method="around" pointcut-ref="serivce"></aop:around>-->
+         <!--</aop:aspect>-->
+    <!--</aop:config>&ndash;&gt;-->
+
+
+
+
+</beans>

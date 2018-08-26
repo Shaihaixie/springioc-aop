@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+    http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop.xsd" >
+
+
+    <context:property-placeholder location="jdbc.properties"></context:property-placeholder>
+
+      <context:component-scan base-package="com.neuedu"></context:component-scan>
+
+
+
+     <!--spring aop-->
+     <!--定义切面类-->
+    <bean id="logAspect" class="com.neuedu.aspect.LogAspect"></bean>
+
+    <aop:config >
+         <aop:aspect id="myAspect" ref="logAspect">
+          <!--定义切入点-->
+             <aop:pointcut id="serivce"   expression="execution(* com.neuedu.service.*.*())"></aop:pointcut>
+             <!--定义前置通知-->
+             <aop:before method="start"  pointcut-ref="serivce"></aop:before>
+             <aop:after-returning method="after_returnning"  pointcut-ref="serivce"></aop:after-returning>
+             <aop:after-throwing method="throwing"  pointcut-ref="serivce"></aop:after-throwing>
+             <aop:after method="finish" pointcut-ref="serivce"></aop:after>
+             
+
+         </aop:aspect>
+
+    </aop:config>
+
+
+
+
+</beans>
